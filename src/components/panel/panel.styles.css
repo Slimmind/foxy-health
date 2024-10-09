@@ -1,0 +1,42 @@
+.panel {
+	position: fixed;
+	top: 80px;
+	left: 10px;
+	width: calc(100% - 20px);
+	height: calc(100% - 190px);
+	max-height: calc(100% - 190px);
+	padding: 6px;
+	opacity: 0;
+	transform-origin: bottom;
+	transform: translateY(20px);
+	transition: opacity .5s, transform .3s ease-out;
+	overflow: auto;
+	z-index: -1;
+}
+
+.panel--filled {
+	background-color: var(--accent-color);
+	backdrop-filter: var(--blur);
+	border-radius: 1rem;
+	color: var(--color-white);
+}
+
+.panel--opened {
+	opacity: 1;
+	transform: translateY(0);
+	z-index: 1;
+}
+
+.panel__section{
+	padding: 10px;
+	background-color: var(--accent-color);
+	border-radius: .75rem;
+}
+
+.panel__header {
+	margin-bottom: 20px;
+}
+
+.panel__header-title {
+	font-size: 1.5rem;
+}

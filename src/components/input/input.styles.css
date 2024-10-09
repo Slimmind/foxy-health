@@ -1,0 +1,98 @@
+.input {
+  margin-bottom: 20px;
+}
+
+.input__wrap {
+  position: relative;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--color-white);
+  border: 4px solid var(--accent-color);
+  border-radius: var(--radius-small);
+  color: var(--accent-color);
+  font-size: 18px;
+  outline: none;
+  resize: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--accent-color-transparent);
+  font-size: 18px;
+}
+
+label {
+  display: inline-block;
+  vertical-align: top;
+  padding: 4px 14px;
+  background-color: var(--accent-color);
+  border-radius: var(--radius-small) var(--radius-small) 0 0;
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+label + .input__wrap input,
+label + .input__wrap textarea {
+  border-radius: 0 var(--radius-small) var(--radius-small) var(--radius-small);
+}
+
+.input__wrap:has(button) input,
+.input__wrap:has(button) textarea {
+  padding-right: 40px;
+}
+
+.input__wrap .btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  background-color: var(--accent-color);
+  border-radius: 0 var(--radius-small) var(--radius-small) 0;
+  box-shadow: none;
+}
+
+.input__wrap .btn--plus::before,
+.input__wrap .btn--minus::before,
+.input__wrap .btn--plus::after {
+  background-color: var(--color-bg);
+}
+
+.input__wrap .btn--wide {
+  margin-bottom: 0;
+}
+
+.input--invalid label {
+  background-color: var(--color-red);
+}
+
+.input--invalid label + .input__wrap input,
+.input--invalid label + .input__wrap textarea {
+  border-color: var(--color-red);
+  border-radius: 0 var(--radius-small) 0 0;
+  color: var(--color-red);
+}
+
+.input__error-message,
+.input__description {
+  padding: 0 14px 4px;
+  background-color: var(--color-red);
+  border-radius: 0 0 var(--radius-small) var(--radius-small);
+  color: var(--color-white);
+  font-size: 12px;
+}
+
+.input__description {
+  background-color: var(--accent-color);
+}
+
+.input__error-message + .input__description {
+  background-color: var(--color-red);
+  font-style: italic;
+}

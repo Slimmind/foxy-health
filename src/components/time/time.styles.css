@@ -1,0 +1,11 @@
+.time {
+  padding: 5px 10px;
+  background-color: var(--accent-color);
+  border-radius: 20px;
+  color: var(--color-white);
+}
+
+.panel--time {
+	padding: 0;
+	border: 0;
+}
