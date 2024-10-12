@@ -6,6 +6,7 @@
   border-radius: var(--radius-main);
   box-shadow: var(--shadow);
   color: var(--color-white);
+	cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
   outline: none;
@@ -119,7 +120,18 @@
 }
 
 .btn--wide {
+	display: block;
   width: 100%;
+	text-align: center;
+}
+
+.btn--light {
+	background-color: var(--color-white);
+	color: var(--accent-color);
+}
+
+a.btn {
+	text-decoration: none;
 }
 
 button:disabled {

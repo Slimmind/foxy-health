@@ -1,5 +1,86 @@
 .input {
+	position: relative;
   margin-bottom: 20px;
+}
+
+.input--radio {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 10px 0 0;
+}
+
+.input--radio label {
+	position: relative;
+	display: flex;
+	align-items: center;
+	height: 40px;
+	padding-left: 40px;
+	background-color: transparent;
+	background-color: var(--accent-color);
+	border-radius: var(--radius-main);
+	cursor: pointer;
+}
+
+.input--radio label::before,
+.input--radio label::after {
+	content: '';
+	position: absolute;
+	border-radius: 50%;
+}
+
+.input--radio label::before {
+	top: 4px;
+	left: 4px;
+	width: 32px;
+	height: 32px;
+	background-color: var(--color-white);
+}
+
+.input--radio label::after {
+	top: 8px;
+	left: 8px;
+	width: 24px;
+	height: 24px;
+	background-color: var(--accent-color);
+	opacity: 0;
+	transform: scale(.8);
+	transition: opacity .3s, transform .3s ease-in-out;
+}
+
+.input--radio input {
+	position: absolute;
+	width: 0;
+	height: 0;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.input--radio input:checked + label::after {
+	opacity: 1;
+	transform: scale(1);
+}
+
+.input--invalid input,
+.input--invalid textarea,
+.input--with-description input,
+.input--with-description textarea {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.input--invalid label {
+  background-color: var(--color-red);
+}
+
+.input--invalid label + .input__wrap input,
+.input--invalid label + .input__wrap textarea {
+  border-color: var(--color-red);
+  color: var(--color-red);
+}
+
+.input--invalid .input__description {
+	background-color: var(--color-red);
+	border-radius: 0;
 }
 
 .input__wrap {
@@ -39,7 +120,7 @@ label {
 
 label + .input__wrap input,
 label + .input__wrap textarea {
-  border-radius: 0 var(--radius-small) var(--radius-small) var(--radius-small);
+  border-top-left-radius: 0;
 }
 
 .input__wrap:has(button) input,
@@ -68,17 +149,6 @@ label + .input__wrap textarea {
   margin-bottom: 0;
 }
 
-.input--invalid label {
-  background-color: var(--color-red);
-}
-
-.input--invalid label + .input__wrap input,
-.input--invalid label + .input__wrap textarea {
-  border-color: var(--color-red);
-  border-radius: 0 var(--radius-small) 0 0;
-  color: var(--color-red);
-}
-
 .input__error-message,
 .input__description {
   padding: 0 14px 4px;
@@ -88,11 +158,13 @@ label + .input__wrap textarea {
   font-size: 12px;
 }
 
-.input__description {
-  background-color: var(--accent-color);
+.input__error-message svg {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 5px;
 }
 
-.input__error-message + .input__description {
-  background-color: var(--color-red);
-  font-style: italic;
+.input__description {
+  background-color: var(--accent-color);
+	font-style: italic;
 }

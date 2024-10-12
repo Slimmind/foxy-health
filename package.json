@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-router": "^1.64.2",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "firebase": "^10.13.1",
@@ -24,6 +25,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
+    "@tanstack/router-devtools": "^1.64.2",
+    "@tanstack/router-plugin": "^1.64.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",

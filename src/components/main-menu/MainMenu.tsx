@@ -47,7 +47,11 @@ export const MainMenu = ({ isActive, togglePanel }: MainMenuProps) => {
 
 	return (
 		<>
-			<Button mod='icon menu' onClick={togglePanel} />
+			<Button
+				mod='icon menu'
+				onClick={togglePanel}
+				aria-label='toggle main menu'
+			/>
 			<Panel isActive={isActive} filled={true}>
 				<div className={classes}>
 					<section className='panel__section'>
@@ -61,6 +65,7 @@ export const MainMenu = ({ isActive, togglePanel }: MainMenuProps) => {
 										style={{
 											backgroundColor: `rgb(${colorOption.color})`,
 										}}
+										aria-label='choose color'
 									/>
 								</li>
 							))}

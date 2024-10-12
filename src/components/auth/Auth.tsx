@@ -25,14 +25,22 @@ export const Auth = ({ isActive, togglePanel }: AuthProps) => {
 
 	return (
 		<>
-			<Button mod='icon auth' onClick={togglePanel} />
+			<Button
+				mod='icon auth'
+				onClick={togglePanel}
+				aria-label='open authentication menu'
+			/>
 			<Panel isActive={isActive} mod='auth'>
 				{currentUser?.uid ? (
-					<Button mod='wide' onClick={logout}>
+					<Button mod='wide' onClick={logout} aria-label='log out'>
 						Log Out
 					</Button>
 				) : (
-					<Button mod='wide' onClick={handleGoogleLogin}>
+					<Button
+						mod='wide'
+						onClick={handleGoogleLogin}
+						aria-label='log in with Google'
+					>
 						Log In with Google
 					</Button>
 				)}

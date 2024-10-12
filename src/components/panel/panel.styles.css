@@ -5,7 +5,7 @@
 	width: calc(100% - 20px);
 	height: calc(100% - 190px);
 	max-height: calc(100% - 190px);
-	padding: 6px;
+	padding: 10px;
 	opacity: 0;
 	transform-origin: bottom;
 	transform: translateY(20px);

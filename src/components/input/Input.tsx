@@ -1,17 +1,20 @@
 import React, {
 	forwardRef,
 	InputHTMLAttributes,
+	lazy,
 	PropsWithChildren,
 	TextareaHTMLAttributes,
 } from 'react';
 import clsx from 'clsx';
 import './input.styles.css';
 
+const WarningIcon = lazy(() => import('../../icons/warning-icon'));
+
 type InputProps = {
 	label?: string;
 	id?: string;
 	type?: string;
-  description?: string;
+	description?: string;
 	errorMessage?: string;
 } & InputHTMLAttributes<HTMLInputElement> &
 	TextareaHTMLAttributes<HTMLTextAreaElement> &
@@ -23,11 +26,17 @@ export const Input = forwardRef<
 >(({ id, label, type, children, description, errorMessage, ...props }, ref) => {
 	const InputElement = type === 'textarea' ? 'textarea' : 'input';
 
-	const classes = clsx('input', errorMessage && 'input--invalid');
+	const isRadio = type === 'radio';
+	const classes = clsx(
+		'input',
+		errorMessage && 'input--invalid',
+		description && 'input--with-description',
+		isRadio && 'input--radio'
+	);
 
 	return (
 		<div className={classes}>
-			{label && <label htmlFor={id}>{label}</label>}
+			{!isRadio && label && <label htmlFor={id}>{label}</label>}
 			<div className='input__wrap'>
 				{React.createElement(InputElement, {
 					ref: ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>,
@@ -35,10 +44,16 @@ export const Input = forwardRef<
 					id,
 					...props,
 				})}
+				{isRadio && label && <label htmlFor={id}>{label}</label>}
 				{children}
 			</div>
-			{errorMessage && <p className='input__error-message'>{errorMessage}</p>}
 			{description && <p className='input__description'>{description}</p>}
+			{errorMessage && (
+				<p className='input__error-message'>
+					<WarningIcon />
+					{errorMessage}
+				</p>
+			)}
 		</div>
 	);
 });

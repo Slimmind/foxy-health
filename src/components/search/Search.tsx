@@ -11,7 +11,11 @@ type SearchProps = {
 export const Search = ({ isActive, togglePanel }: SearchProps) => {
 	return (
 		<>
-			<Button mod='icon search' onClick={togglePanel} />
+			<Button
+				mod='icon search'
+				onClick={togglePanel}
+				aria-label='toggle search panel'
+			/>
 			<Panel isActive={isActive}>SEARCH</Panel>
 		</>
 	);

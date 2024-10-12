@@ -13,6 +13,11 @@ export type ColorOption = {
 	color: string;
 };
 
+export type MenuItem = {
+	path: string;
+	name: string;
+};
+
 export const FormViews = {
 	LOGIN: 'login',
 	SIGN_UP: 'sign_up',
@@ -41,7 +46,7 @@ export type PatientFormType = {
 export const PatientFormInitialValues = {
 	name: '',
 	age: '',
-	gender: '',
+	gender: 'female',
 	height: '',
 	weight: '',
 	bloodPressure: '',

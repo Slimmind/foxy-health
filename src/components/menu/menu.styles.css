@@ -1,0 +1,26 @@
+.menu {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.menu__item {
+	width: 100%;
+}
+
+@media (min-width: 700px) {
+	.menu {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.menu__item {
+		width: calc(50% - 5px);
+	}
+}
+
+@media (min-width: 960px) {
+	.menu__item {
+		width: calc(33.33% - 7.5px);
+	}
+}

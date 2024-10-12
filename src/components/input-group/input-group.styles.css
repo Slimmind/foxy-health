@@ -1,0 +1,30 @@
+.input-group {
+	margin-bottom: 20px;
+}
+
+.input-group__title {
+	display: inline-block;
+  vertical-align: top;
+  padding: 4px 14px;
+  background-color: var(--accent-color);
+  border-radius: var(--radius-small) var(--radius-small) 0 0;
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.input-group__body {
+	padding: 10px;
+  border: var(--main-border-width) solid var(--accent-color);
+  border-radius: 0 var(--radius-small) var(--radius-small);
+}
+
+.input-group:has(input:invalid) .input-group__body {
+	border-color: var(--color-red);
+}
+
+.input-group--with-description .input-group__body
+.input-group--invalid .input-group__body {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
