@@ -1,5 +1,5 @@
 .input-group {
-	margin-bottom: 20px;
+
 }
 
 .input-group__title {
@@ -14,6 +14,9 @@
 }
 
 .input-group__body {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
 	padding: 10px;
   border: var(--main-border-width) solid var(--accent-color);
   border-radius: 0 var(--radius-small) var(--radius-small);

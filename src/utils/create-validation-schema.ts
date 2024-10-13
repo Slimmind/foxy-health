@@ -1,58 +1,63 @@
 import * as Yup from 'yup';
+import { ValidationRule } from './constants';
 
-// Type definition for field configuration
-type FieldConfig = {
-	type: 'string' | 'number';
-	required: boolean;
-	positive?: boolean;
-	integer?: boolean;
-	message?: string | { [key: string]: string };
-};
-
-type FormConfig = Record<string, FieldConfig>;
-
-// Function to create Yup schema from the config
-export const createValidationSchema = (config: FormConfig) => {
+export const createValidationSchema = (
+	validationRules: Record<string, ValidationRule>
+) => {
 	const schema: Record<string, Yup.AnySchema> = {};
 
-	// Iterate over each field in the config
-	Object.entries(config).forEach(([field, fieldConfig]) => {
-		const { type, required, positive, integer, message } = fieldConfig;
+	Object.entries(validationRules).forEach(([field, fieldConfig]) => {
+		const { type, required, positive, integer, min, max, message } =
+			fieldConfig;
 
-		// Initialize the validator based on the field type
-		let validator: Yup.StringSchema | Yup.NumberSchema;
+		let validator: Yup.StringSchema | Yup.NumberSchema | undefined;
 
-		if (type === 'string') {
-			validator = Yup.string() as Yup.StringSchema;
-		} else if (type === 'number') {
-			validator = Yup.number() as Yup.NumberSchema;
+		// Define the base validator based on the field type
+		switch (type) {
+			case 'string':
+				validator = Yup.string();
+				break;
 
-			// Apply number-specific validation rules
-			if (positive) {
-				const positiveMsg =
-					typeof message !== 'string' ? message?.positive : undefined;
-				validator = (validator as Yup.NumberSchema).positive(positiveMsg);
-			}
-			if (integer) {
-				const integerMsg =
-					typeof message !== 'string' ? message?.integer : undefined;
-				validator = (validator as Yup.NumberSchema).integer(integerMsg);
-			}
-		} else {
-			throw new Error(`Unsupported field type: ${type}`);
+			case 'number':
+				validator = Yup.number();
+
+				// Add number-specific validations
+				if (positive) {
+					const positiveMsg = message?.positive || 'Must be a positive number';
+					validator = validator.positive(positiveMsg);
+				}
+
+				if (integer) {
+					const integerMsg = message?.integer || 'Must be an integer';
+					validator = validator.integer(integerMsg);
+				}
+
+				if (min !== undefined) {
+					const minMsg = message?.min || `Minimum value is ${min}`;
+					validator = validator.min(min, minMsg);
+				}
+
+				if (max !== undefined) {
+					const maxMsg = message?.max || `Maximum value is ${max}`;
+					validator = validator.max(max, maxMsg);
+				}
+				break;
+
+			default:
+				throw new Error(`Unsupported field type: ${type}`);
 		}
 
-		// Add required check if applicable
+		// Apply required validation if the field is required
 		if (required) {
-			const requiredMsg =
-				typeof message === 'string' ? message : message?.required;
+			const requiredMsg = message?.required || 'This field is required';
 			validator = validator.required(requiredMsg);
 		}
 
-		// Assign the validator to the schema
-		schema[field] = validator;
+		// Ensure the validator exists before assigning it to the schema
+		if (validator) {
+			schema[field] = validator;
+		}
 	});
-
-	// Return the Yup validation schema
-	return Yup.object(schema);
+	// Return a Yup object schema
+	return Yup.object().shape(schema);
 };

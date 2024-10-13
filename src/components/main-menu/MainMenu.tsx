@@ -1,11 +1,24 @@
 import { lazy } from 'react';
-import { appColors, ColorOption } from '../../utils/constants';
+import { appColors, ColorOptionType } from '../../utils/constants';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import './main-menu.styles.css';
+import Menu from '../menu';
+import Dropdown from '../dropdown';
 
 const Button = lazy(() => import('../button'));
 const Panel = lazy(() => import('../panel'));
+
+const creationMenuItems = [
+	{
+		path: '/forms/basic-questionnaire',
+		name: 'Базовая анкета',
+	},
+	{
+		path: '/forms/smart-diagnostics',
+		name: 'SMART Диагностика',
+	},
+];
 
 type MainMenuProps = {
 	isActive: boolean;
@@ -14,7 +27,7 @@ type MainMenuProps = {
 
 export const MainMenu = ({ isActive, togglePanel }: MainMenuProps) => {
 	const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
-	const [colorsMenu, setColorsMenu] = useState<ColorOption[]>([]);
+	const [colorsMenu, setColorsMenu] = useState<ColorOptionType[]>([]);
 
 	const changeColor = (color: string) => {
 		document.documentElement.style.setProperty('--main-color-prop', color);
@@ -24,7 +37,7 @@ export const MainMenu = ({ isActive, togglePanel }: MainMenuProps) => {
 		);
 
 		const changedColors = colorsMenu.map(
-			(colorOption: ColorOption, idx: number): ColorOption => ({
+			(colorOption: ColorOptionType, idx: number): ColorOptionType => ({
 				...colorOption,
 				isActive: idx === newColorIndex,
 			})
@@ -52,24 +65,34 @@ export const MainMenu = ({ isActive, togglePanel }: MainMenuProps) => {
 				onClick={togglePanel}
 				aria-label='toggle main menu'
 			/>
-			<Panel isActive={isActive} filled={true}>
+			<Panel isActive={isActive} filled={true} mod='main-menu'>
 				<div className={classes}>
 					<section className='panel__section'>
-						<ul className='main-menu__colors'>
-							{colorsMenu.map((colorOption, idx) => (
-								<li className='main-menu__colors-item' key={idx}>
-									<Button
-										mod='icon color'
-										activeClass={colorOption.isActive ? 'active' : ''}
-										onClick={() => changeColor(colorOption.color)}
-										style={{
-											backgroundColor: `rgb(${colorOption.color})`,
-										}}
-										aria-label='choose color'
-									/>
-								</li>
-							))}
-						</ul>
+						<Dropdown title='Создать:'>
+							<Menu
+								items={creationMenuItems}
+								itemClasses='btn btn--wide btn--light'
+							/>
+						</Dropdown>
+					</section>
+					<section className='panel__section'>
+						<Dropdown title='Сменить цвет:'>
+							<ul className='main-menu__colors'>
+								{colorsMenu.map((colorOption, idx) => (
+									<li className='main-menu__colors-item' key={idx}>
+										<Button
+											mod='icon color'
+											activeClass={colorOption.isActive ? 'active' : ''}
+											onClick={() => changeColor(colorOption.color)}
+											style={{
+												backgroundColor: `rgb(${colorOption.color})`,
+											}}
+											aria-label='choose color'
+										/>
+									</li>
+								))}
+							</ul>
+						</Dropdown>
 					</section>
 				</div>
 			</Panel>

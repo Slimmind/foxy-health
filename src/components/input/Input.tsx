@@ -26,17 +26,17 @@ export const Input = forwardRef<
 >(({ id, label, type, children, description, errorMessage, ...props }, ref) => {
 	const InputElement = type === 'textarea' ? 'textarea' : 'input';
 
-	const isRadio = type === 'radio';
+	const isChecking = type === 'radio' || type === 'checkbox';
 	const classes = clsx(
 		'input',
+		`input--${type}`,
 		errorMessage && 'input--invalid',
-		description && 'input--with-description',
-		isRadio && 'input--radio'
+		description && 'input--with-description'
 	);
 
 	return (
 		<div className={classes}>
-			{!isRadio && label && <label htmlFor={id}>{label}</label>}
+			{!isChecking && label && <label htmlFor={id}>{label}</label>}
 			<div className='input__wrap'>
 				{React.createElement(InputElement, {
 					ref: ref as React.Ref<HTMLInputElement & HTMLTextAreaElement>,
@@ -44,7 +44,7 @@ export const Input = forwardRef<
 					id,
 					...props,
 				})}
-				{isRadio && label && <label htmlFor={id}>{label}</label>}
+				{isChecking && label && <label htmlFor={id}>{label}</label>}
 				{children}
 			</div>
 			{description && <p className='input__description'>{description}</p>}

@@ -1,0 +1,292 @@
+{
+	"formId": "basics",
+	"formTitle": "Базовая анкета",
+	"formSubtitle": "Sub Title",
+	"formDescription": "Form Description",
+	"initialValues": {
+		"lastName": "",
+		"firstName": "",
+		"patronymic": "",
+		"children": "",
+		"purpose": "",
+		"waistSize": "",
+		"drunkWaterPerDay": "",
+		"diseases": "",
+		"bedTimes": "",
+		"sleepDuration": "",
+		"dandruff": ""
+	},
+	"validationRules": {
+		"lastName": {
+			"type": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"firstName": {
+			"type": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"patronymic": {
+			"type": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"gender": {
+			"type": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"children": {
+			"type": "number",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"purpose": {
+			"type": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"waistSize": {
+			"type": "number",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"drunkWaterPerDay": {
+			"type": "number",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"diseases": {
+			"type": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"bedTimes": {
+			"type": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"sleepDuration": {
+			"type": "number",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"dandruff": {
+			"type": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		}
+	},
+	"nodes": [
+		{
+			"node": "set",
+			"id": "basics",
+			"title": "Знакомство",
+			"items": [
+				{
+					"node": "field",
+					"id": "lastName",
+					"type": "text",
+					"name": "lastName",
+					"label": "Фамилия",
+					"description": ""
+				},
+				{
+					"node": "field",
+					"id": "firstName",
+					"type": "text",
+					"name": "firstName",
+					"label": "Имя",
+					"description": ""
+				},
+				{
+					"node": "field",
+					"id": "patronymic",
+					"type": "text",
+					"name": "patronymic",
+					"label": "Отчество",
+					"description": ""
+				},
+				{
+					"node": "group",
+					"id": "gender",
+					"title": "Пол",
+					"items": [
+						{
+							"node": "field",
+							"id": "female",
+							"type": "radio",
+							"name": "gender",
+							"label": "Женский",
+							"description": ""
+						},
+						{
+							"node": "field",
+							"id": "male",
+							"type": "radio",
+							"name": "gender",
+							"label": "Мужской",
+							"description": ""
+						}
+					]
+				},
+				{
+					"node": "field",
+					"id": "children",
+					"type": "number",
+					"name": "children",
+					"label": "Дети",
+					"description": ""
+				},
+				{
+					"node": "field",
+					"id": "purpose",
+					"type": "textarea",
+					"name": "purpose",
+					"label": "Цель обращения",
+					"description": "С какой целью клиент обращается к нутрициологу"
+				}
+			]
+		},
+		{
+			"node": "set",
+			"id": "sleep",
+			"title": "Сон",
+			"items": [
+				{
+					"node": "field",
+					"id": "bedTimes",
+					"type": "text",
+					"name": "bedTimes",
+					"label": "Время отхода ко сну",
+					"description": ""
+				},
+				{
+					"node": "field",
+					"id": "sleepDuration",
+					"type": "text",
+					"name": "sleepDuration",
+					"label": "Продолжительность сна",
+					"description": ""
+				},
+				{
+					"node": "group",
+					"id": "sleepСharacteristics",
+					"title": "Пол",
+					"items": [
+						{
+							"node": "field",
+							"id": "fallingAsleepQuickly",
+							"type": "checkbox",
+							"name": "fallingAsleepQuickly",
+							"label": "Быстро засыпаете?",
+							"description": ""
+						},
+						{
+							"node": "field",
+							"id": "wakeUpEasily",
+							"type": "checkbox",
+							"name": "wakeUpEasily",
+							"label": "Легко просыпаетесь?",
+							"description": ""
+						},
+						{
+							"node": "field",
+							"id": "nightAwakenings",
+							"type": "checkbox",
+							"name": "nightAwakenings",
+							"label": "Есть ли ночные пробуждения?",
+							"description": ""
+						},
+						{
+							"node": "field",
+							"id": "energeticAfterWakingUp",
+							"type": "checkbox",
+							"name": "energeticAfterWakingUp",
+							"label": "Есть ли бодрость после пробуждения?",
+							"description": ""
+						},
+						{
+							"node": "field",
+							"id": "nightmares",
+							"type": "checkbox",
+							"name": "nightmares",
+							"label": "Ночные кошмары, возможно, связаны с тем, что Вы легли спать на голодный желудок",
+							"description": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"node": "set",
+			"id": "gastrointestinalTract",
+			"title": "ЖКТ",
+			"items": []
+		},
+		{
+			"node": "set",
+			"id": "anamnesis",
+			"title": "Анамнез",
+			"items": [
+				{
+					"node": "field",
+					"id": "waistSize",
+					"type": "number",
+					"name": "waistSize",
+					"label": "Объем талии (см)",
+					"description": ""
+				},
+				{
+					"node": "field",
+					"id": "drunkWaterPerDay",
+					"type": "number",
+					"name": "drunkWaterPerDay",
+					"label": "Объем выпиваемой воды а день (л)",
+					"description": ""
+				},
+				{
+					"node": "field",
+					"id": "diseases",
+					"type": "textarea",
+					"name": "diseases",
+					"label": "Заболевания",
+					"description": "Хронические заболевания, установленные диагнозы"
+				},
+				{
+					"node": "field",
+					"id": "dandruff",
+					"type": "checkbox",
+					"name": "dandruff",
+					"label": "Перхоть",
+					"description": ""
+				}
+			]
+		}
+	]
+}

@@ -1,9 +1,9 @@
 import { Link } from '@tanstack/react-router';
-import { MenuItem } from '../../utils/constants';
+import { MenuItemType } from '../../utils/constants';
 import './menu.styles.css';
 
 type MenuProps = {
-	items: MenuItem[];
+	items: MenuItemType[];
 	itemClasses?: string;
 };
 

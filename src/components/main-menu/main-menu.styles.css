@@ -1,4 +1,30 @@
+.main-menu {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
 .main-menu__colors {
 	display: flex;
-	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.main-menu__colors .btn {
+	margin: 4px;
+}
+
+
+@media (min-width: 1200px) {
+	.panel.panel--main-menu {
+		left: 10px;
+		width: 280px;
+		opacity: 1;
+    transform: translateY(0);
+    z-index: 1;
+	}
+
+	.btn--menu {
+		display: none;
+	}
 }

@@ -1,6 +1,5 @@
 .input {
 	position: relative;
-  margin-bottom: 20px;
 }
 
 .input--radio {
@@ -9,31 +8,43 @@
 	margin: 0 10px 0 0;
 }
 
-.input--radio label {
+.input--radio label,
+.input--checkbox label {
 	position: relative;
 	display: flex;
 	align-items: center;
-	height: 40px;
+	min-height: 40px;
 	padding-left: 40px;
-	background-color: transparent;
 	background-color: var(--accent-color);
 	border-radius: var(--radius-main);
 	cursor: pointer;
 }
 
-.input--radio label::before,
-.input--radio label::after {
-	content: '';
-	position: absolute;
-	border-radius: 50%;
+.input--checkbox label {
+	background-color: transparent;
+	color: var(--accent-color);
 }
 
-.input--radio label::before {
-	top: 4px;
+.input--radio label::before,
+.input--radio label::after,
+.input--checkbox label::before,
+.input--checkbox label::after {
+	content: '';
+	position: absolute;
+}
+
+.input--radio label::before,
+.input--checkbox label::before {
+	top: calc(50% - 16px);
 	left: 4px;
 	width: 32px;
 	height: 32px;
 	background-color: var(--color-white);
+}
+
+.input--radio label::before,
+.input--radio label::after {
+	border-radius: 50%;
 }
 
 .input--radio label::after {
@@ -47,7 +58,25 @@
 	transition: opacity .3s, transform .3s ease-in-out;
 }
 
-.input--radio input {
+.input--checkbox label::before {
+	border: var(--main-border-width) solid var(--accent-color);
+	border-radius: var(--radius-small);
+}
+
+.input--checkbox label::after {
+	top: calc(50% - 14px);
+	left: 14px;
+	width: 12px;
+	height: 20px;
+	border-right: var(--main-border-width) solid var(--accent-color);
+	border-bottom: var(--main-border-width) solid var(--accent-color);
+	opacity: 0;
+	transform: scale(.8) rotate(45deg);
+	transition: opacity .3s, transform .3s ease-in-out;
+}
+
+.input--radio input,
+.input--checkbox input {
 	position: absolute;
 	width: 0;
 	height: 0;
@@ -55,9 +84,14 @@
 	pointer-events: none;
 }
 
-.input--radio input:checked + label::after {
+.input--radio input:checked + label::after,
+.input--checkbox input:checked + label::after {
 	opacity: 1;
 	transform: scale(1);
+}
+
+.input--checkbox input:checked + label::after {
+	transform: scale(1) rotate(45deg);
 }
 
 .input--invalid input,
@@ -78,6 +112,13 @@
   color: var(--color-red);
 }
 
+.input--invalid.input--radio label,
+.input--invalid.input--checkbox label {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	color: var(--color-white);
+}
+
 .input--invalid .input__description {
 	background-color: var(--color-red);
 	border-radius: 0;
@@ -93,7 +134,7 @@ textarea {
   width: 100%;
   padding: 10px;
   background-color: var(--color-white);
-  border: 4px solid var(--accent-color);
+  border: var(--main-border-width) solid var(--accent-color);
   border-radius: var(--radius-small);
   color: var(--accent-color);
   font-size: 18px;

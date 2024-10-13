@@ -4,6 +4,7 @@ import './auth.styles.css';
 
 const Button = lazy(() => import('../button'));
 const Panel = lazy(() => import('../panel'));
+const GoogleIcon = lazy(() => import('../../icons/google-icon'));
 
 type AuthProps = {
 	isActive: boolean;
@@ -24,28 +25,34 @@ export const Auth = ({ isActive, togglePanel }: AuthProps) => {
 	};
 
 	return (
-		<>
+		<section onClick={togglePanel}>
 			<Button
-				mod='icon auth'
+				mod='icon bordered auth'
 				onClick={togglePanel}
 				aria-label='open authentication menu'
 			/>
-			<Panel isActive={isActive} mod='auth'>
+			<Panel
+				isActive={isActive}
+				mod='auth'
+				filled={true}
+				title='Аутентификация'
+			>
 				{currentUser?.uid ? (
-					<Button mod='wide' onClick={logout} aria-label='log out'>
+					<Button mod='wide light' onClick={logout} aria-label='log out'>
 						Log Out
 					</Button>
 				) : (
 					<Button
-						mod='wide'
+						mod='wide light'
 						onClick={handleGoogleLogin}
 						aria-label='log in with Google'
 					>
+						<GoogleIcon />
 						Log In with Google
 					</Button>
 				)}
 				{error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
 			</Panel>
-		</>
+		</section>
 	);
 };

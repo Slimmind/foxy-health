@@ -1,6 +1,6 @@
-import { PatientFormType, PromptParts } from './constants';
+import { InitialValuesType, PromptParts } from './constants';
 
-export const createPrompt = (data: PatientFormType): string => `
+export const createPrompt = (data: InitialValuesType): string => `
 	Based on the following patient data:
 
 	Age: ${data.age}

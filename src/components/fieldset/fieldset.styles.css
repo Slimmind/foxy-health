@@ -1,18 +1,39 @@
-fieldset {
+.fieldset {
 	margin-bottom: 40px;
 	padding: 10px;
 	border: 2px solid var(--accent-color);
 	border-radius: var(--radius-small);
 }
 
-fieldset .input:last-of-type,
-fieldset .input-group:last-of-type {
-	margin-bottom: 0;
-}
-
 legend {
+	margin-bottom: 10px;
 	padding: 10px;
 	background-color: var(--accent-color);
 	color: var(--color-white);
 	border-radius: var(--radius-main);
+}
+
+.fieldset__content {
+  display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+@media (min-width: 700px) {
+	.fieldset__content {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.fieldset__content > .input,
+  .fieldset__content > .input-group {
+		width: calc(50% - 10px);
+	}
+}
+
+@media (min-width: 1200px) {
+	.fieldset__content > .input,
+  .fieldset__content > .input-group {
+		width: calc(33.33% - 15px);
+	}
 }

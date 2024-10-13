@@ -14,10 +14,24 @@
   width: calc(100% - 20px);
   height: 10px;
   background-color: var(--accent-color);
-  border-radius: 5px;
+  border-radius: 10px;
   transform: translateX(-50%);
 }
 
 .btn--menu {
 	margin: 0 auto;
+}
+
+@media (min-width: 1200px) {
+	.site-footer {
+		padding: 14px 10px 0;
+	}
+
+	.site-footer::before {
+		content: 'SLIMMIND  \00a9  2024';
+		height: 14px;
+		text-align: center;
+		color: var(--color-white-transparent);
+		font-size: 12px;
+	}
 }

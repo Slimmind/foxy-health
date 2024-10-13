@@ -5,13 +5,13 @@ import './input-group.styles.css';
 const WarningIcon = lazy(() => import('../../icons/warning-icon'));
 
 type InputGroupProps = {
-	label: string;
+	title?: string;
 	description?: string;
 	errorMessage?: string;
 } & PropsWithChildren;
 
 export const InputGroup = ({
-	label,
+	title,
 	children,
 	description,
 	errorMessage,
@@ -23,7 +23,7 @@ export const InputGroup = ({
 	);
 	return (
 		<div className={classes}>
-			<h5 className='input-group__title'>{label}</h5>
+			<h5 className='input-group__title'>{title}</h5>
 			<div className='input-group__body'>{children}</div>
 			{description && <p className='input__description'>{description}</p>}
 			{errorMessage && (

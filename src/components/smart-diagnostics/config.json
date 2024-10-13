@@ -1,0 +1,28 @@
+{
+	"formId": "smart-diagnostics",
+	"formTitle": "SMART Diagnostics",
+	"formSubtitle": "Sub Title",
+	"formDescription": "Form Description",
+	"initialValues": {
+		"lastName": ""
+	},
+	"validationRules": {
+		"lastName": {
+			"type": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		}
+	},
+	"nodes": [
+		{
+			"node": "field",
+			"id": "lastName",
+			"type": "text",
+			"name": "lastName",
+			"label": "Фамилия",
+			"description": ""
+		}
+	]
+}
