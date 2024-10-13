@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { appColors, ColorOption } from '../../utils/constants';
+import { appColors, ColorOptionType } from '../../utils/constants';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import './main-menu.styles.css';
@@ -14,7 +14,7 @@ type MainMenuProps = {
 
 export const MainMenu = ({ isActive, togglePanel }: MainMenuProps) => {
 	const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
-	const [colorsMenu, setColorsMenu] = useState<ColorOption[]>([]);
+	const [colorsMenu, setColorsMenu] = useState<ColorOptionType[]>([]);
 
 	const changeColor = (color: string) => {
 		document.documentElement.style.setProperty('--main-color-prop', color);
@@ -24,7 +24,7 @@ export const MainMenu = ({ isActive, togglePanel }: MainMenuProps) => {
 		);
 
 		const changedColors = colorsMenu.map(
-			(colorOption: ColorOption, idx: number): ColorOption => ({
+			(colorOption: ColorOptionType, idx: number): ColorOptionType => ({
 				...colorOption,
 				isActive: idx === newColorIndex,
 			})

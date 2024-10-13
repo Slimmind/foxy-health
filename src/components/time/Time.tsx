@@ -32,7 +32,12 @@ export const Time = ({ isActive, togglePanel }: TimeProps) => {
 			<div className='time' onClick={togglePanel}>
 				{time}
 			</div>
-			<Panel isActive={isActive} mod='time' filled={true}></Panel>
+			<Panel
+				isActive={isActive}
+				mod='time'
+				filled={true}
+				title='Календарь'
+			></Panel>
 		</>
 	);
 };

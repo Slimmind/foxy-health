@@ -1,78 +1,111 @@
 {
+	"formId": "basics",
+	"formTitle": "Базовая анкета",
+	"formSubtitle": "Sub Title",
+	"formDescription": "Form Description",
 	"initialValues": {
+		"lastName": "",
 		"firstName": "",
 		"patronymic": "",
-		"surname": "",
-		"age": "",
-		"gender": "female",
-		"height": "",
-		"weight": "",
-		"bloodPressure": "",
-		"notes": ""
+		"children": 0
 	},
 	"validationRules": {
-		"firstName": {
-			"type": "string",
+		"lastName": {
+			"kind": "string",
 			"required": true,
-			"message": "First name is required"
-		},
-		"surname": {
-			"type": "string",
-			"required": true,
-			"message": "Surname is required"
-		},
-		"age": {
-			"type": "number",
-			"required": true,
-			"positive": true,
-			"integer": true,
 			"message": {
-				"required": "Age is required",
-				"positive": "Age must be a positive number",
-				"integer": "Age must be an integer"
+				"required": "Поле должно быть заполнено."
 			}
+		},
+		"firstName": {
+			"kind": "string",
+			"required": true,
+			"message": {
+				"required": "Поле должно быть заполнено."
+			}
+		},
+		"patronymic": {
+			"kind": "string",
+			"required": false,
+			"message": ""
 		},
 		"gender": {
-			"type": "string",
+			"kind": "string",
 			"required": true,
-			"message": "Gender is required"
-		},
-		"height": {
-			"type": "number",
-			"required": true,
-			"positive": true,
 			"message": {
-				"required": "Height is required",
-				"positive": "Height must be a positive number"
+				"required": "Поле должно быть заполнено."
 			}
 		},
-		"weight": {
-			"type": "number",
+		"children": {
+			"kind": "number",
 			"required": true,
-			"positive": true,
 			"message": {
-				"required": "Weight is required",
-				"positive": "Weight must be a positive number"
+				"required": "Поле должно быть заполнено."
 			}
-		},
-		"bloodPressure": {
-			"type": "string",
-			"required": true,
-			"message": "Blood Pressure is required"
-		},
-		"notes": {
-			"type": "string",
-			"required": false
 		}
 	},
-	"items": [
+	"nodes": [
 		{
-			"node": "field",
-			"id": "firstName",
-			"type": "text",
-			"name": "firstName",
-			"label": "Имя",
-			"description": ""
+			"node": "set",
+			"id": "basics",
+			"title": "Знакомство",
+			"items": [
+				{
+					"node": "field",
+					"id": "lastName",
+					"type": "text",
+					"name": "lastName",
+					"label": "Фамилия",
+					"description": ""
+				},
+				{
+					"node": "field",
+					"id": "firstName",
+					"type": "text",
+					"name": "firstName",
+					"label": "Имя",
+					"description": ""
+				},
+				{
+					"node": "field",
+					"id": "patronymic",
+					"type": "text",
+					"name": "patronymic",
+					"label": "Отчество",
+					"description": ""
+				},
+				{
+					"node": "group",
+					"id": "gender",
+					"title": "Пол",
+					"items": [
+						{
+							"node": "field",
+							"id": "female",
+							"type": "radio",
+							"name": "gender",
+							"label": "Женский",
+							"description": ""
+						},
+						{
+							"node": "field",
+							"id": "male",
+							"type": "radio",
+							"name": "gender",
+							"label": "Мужской",
+							"description": ""
+						}
+					]
+				},
+				{
+					"node": "field",
+					"id": "children",
+					"type": "number",
+					"name": "children",
+					"label": "Дети",
+					"description": ""
+				}
+			]
 		}
 	]
 }

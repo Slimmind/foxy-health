@@ -13,7 +13,7 @@
   line-height: 1.2;
   font-optical-sizing: auto;
 
-  --blur: blur(2px);
+  --blur: blur(5px);
   --shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
   --radius-main: 1.1rem;
   --radius-small: 0.5rem;
@@ -49,8 +49,4 @@ h1 {
 
 ul {
   list-style: none;
-}
-
-.form {
-	padding: 10px;
 }

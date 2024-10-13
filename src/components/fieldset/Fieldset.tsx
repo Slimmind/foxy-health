@@ -7,9 +7,11 @@ type FieldsetProps = {
 
 export const Fieldset = ({ children, title }: FieldsetProps) => {
 	return (
-		<fieldset>
+		<fieldset className='fieldset'>
 			{title && <legend>{title}</legend>}
-			{children}
+      <div className="fieldset__content">
+			  {children}
+      </div>
 		</fieldset>
 	);
 };

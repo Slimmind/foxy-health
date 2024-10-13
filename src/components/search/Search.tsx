@@ -16,7 +16,7 @@ export const Search = ({ isActive, togglePanel }: SearchProps) => {
 				onClick={togglePanel}
 				aria-label='toggle search panel'
 			/>
-			<Panel isActive={isActive}>SEARCH</Panel>
+			<Panel isActive={isActive} title='Поиск' filled={true}></Panel>
 		</>
 	);
 };

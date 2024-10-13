@@ -8,12 +8,12 @@ export const appColors = [
 	'150, 150, 150',
 ];
 
-export type ColorOption = {
+export type ColorOptionType = {
 	isActive: boolean;
 	color: string;
 };
 
-export type MenuItem = {
+export type MenuItemType = {
 	path: string;
 	name: string;
 };
@@ -33,24 +33,46 @@ export const PanelTypes = {
 	TIME: 'time',
 };
 
-export type PatientFormType = {
-	name?: string;
-	age: string;
-	gender: string;
-	height: string;
-	weight: string;
-	bloodPressure: string;
-	notes: string;
+export type ValidationRule = {
+	kind: 'string' | 'number';
+	required?: boolean;
+	positive?: boolean;
+	integer?: boolean;
+	min?: number;
+	max?: number;
+	message?: {
+		required?: string;
+		positive?: string;
+		integer?: string;
+		min?: string;
+		max?: string;
+	};
 };
 
-export const PatientFormInitialValues = {
-	name: '',
-	age: '',
-	gender: 'female',
-	height: '',
-	weight: '',
-	bloodPressure: '',
-	notes: '',
+export type InitialValuesType = Record<string, string | number>;
+
+export type FormNodeType = {
+	node: 'field' | 'group' | 'set';
+	id: string;
+	title?: string;
+	items?: FormNodeType[];
+	type?: string; // Optional for field types
+	name?: string; // Optional for field names
+	label?: string; // Optional for field labels
+	description?: string; // Optional for field descriptions
+};
+
+// Universal FormConfigType
+export type FormConfigType = {
+	formId: string;
+	formTitle: string;
+	formSubtitle: string;
+	formDescription: string;
+	initialValues: InitialValuesType;
+	validationRules?: {
+		[key: string]: ValidationRule; // Validation rules for each field
+	};
+	nodes: FormNodeType[];
 };
 
 export const PromptParts = {
