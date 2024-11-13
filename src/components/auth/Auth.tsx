@@ -38,12 +38,12 @@ export const Auth = ({ isActive, togglePanel }: AuthProps) => {
 				title='Аутентификация'
 			>
 				{currentUser?.uid ? (
-					<Button mod='wide light' onClick={logout} aria-label='log out'>
+					<Button mod='wide secondary' onClick={logout} aria-label='log out'>
 						Log Out
 					</Button>
 				) : (
 					<Button
-						mod='wide light'
+						mod='wide secondary'
 						onClick={handleGoogleLogin}
 						aria-label='log in with Google'
 					>
