@@ -18,6 +18,10 @@ const creationMenuItems = [
 		path: '/forms/smart-diagnostics',
 		name: 'SMART Диагностика',
 	},
+	{
+		path: '/forms/smart-diagnostics',
+		name: 'Конструктор',
+	},
 ];
 
 type MainMenuProps = {
@@ -71,7 +75,7 @@ export const MainMenu = ({ isActive, togglePanel }: MainMenuProps) => {
 						<Dropdown title='Создать:'>
 							<Menu
 								items={creationMenuItems}
-								itemClasses='btn btn--wide btn--light'
+								itemClasses='btn btn--wide btn--secondary'
 							/>
 						</Dropdown>
 					</section>

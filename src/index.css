@@ -27,6 +27,7 @@
   --color-white-transparent: rgba(255, 255, 255, var(--main-color-opacity));
   --color-red: maroon;
   --color-black: black;
+	--color-gray: gray;
   --semi-accent-color-opacity: 0.2;
   --accent-color: rgba(var(--main-color-prop), var(--main-color-opacity));
   --semi-accent-color: rgba(

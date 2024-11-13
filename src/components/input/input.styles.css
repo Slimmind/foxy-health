@@ -209,3 +209,9 @@ label + .input__wrap textarea {
   background-color: var(--accent-color);
 	font-style: italic;
 }
+
+.input--disabled {
+	cursor: not-allowed;
+	opacity: .5;
+	pointer-events: none;
+}
