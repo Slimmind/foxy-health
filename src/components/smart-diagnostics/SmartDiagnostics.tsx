@@ -4,7 +4,7 @@ import * as config from './config.json';
 import { FormConfigType, InitialValuesType } from '../../utils/constants';
 import './smart-diagnostics.styles.css';
 
-const FormCreator = lazy(() => import('../form-creator'));
+const FormRenderer = lazy(() => import('../form-renderer'));
 
 const formConfig: FormConfigType = config as FormConfigType; // Type assertion
 
@@ -51,7 +51,7 @@ export const SmartDiagnostics = () => {
 
 	return (
 		<>
-			<FormCreator config={formConfig} submitHandler={handleSubmit} />
+			<FormRenderer config={formConfig} submitHandler={handleSubmit} />
 		</>
 	);
 };
