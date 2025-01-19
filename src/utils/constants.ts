@@ -8,6 +8,34 @@ export const appColors = [
 	'150, 150, 150',
 ];
 
+export type FormConfigItemType = {
+	id: string;
+	type: string;
+	label?: string;
+	placeholder?: string;
+	description?: string;
+};
+
+export type FormConfigItemWrapType = {
+	id: string;
+	type: string;
+	title: string;
+	subtitle?: string;
+	description?: string;
+	items: FormConfigItemWrapType[];
+};
+
+export const FormItemTypes = {
+	STEP: 'step',
+	BLOCK: 'block',
+	COLUMN: 'column',
+	FIELDSET: 'fieldset',
+	FIELD: 'input',
+	LARGE_FIELD: 'textarea',
+	CHECKBOX: 'checkbox',
+	RADIO_BUTTON: 'radio',
+};
+
 export type ColorOptionType = {
 	isActive: boolean;
 	color: string;

@@ -1,2 +1,13 @@
 .form-creator {
+  padding: 10px;
+}
+
+.form-creator__sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-creator__body code {
+  white-space: wrap;
 }
