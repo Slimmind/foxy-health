@@ -18,6 +18,7 @@ import { Route as FormsSmartDiagnosticsImport } from './routes/forms/smart-diagn
 
 // Create Virtual Routes
 
+const FormsFormCreatorLazyImport = createFileRoute('/forms/form-creator')()
 const FormsBasicQuestionnaireLazyImport = createFileRoute(
   '/forms/basic-questionnaire',
 )()
@@ -28,6 +29,13 @@ const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const FormsFormCreatorLazyRoute = FormsFormCreatorLazyImport.update({
+  path: '/forms/form-creator',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/forms/form-creator.lazy').then((d) => d.Route),
+)
 
 const FormsBasicQuestionnaireLazyRoute =
   FormsBasicQuestionnaireLazyImport.update({
@@ -67,6 +75,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FormsBasicQuestionnaireLazyImport
       parentRoute: typeof rootRoute
     }
+    '/forms/form-creator': {
+      id: '/forms/form-creator'
+      path: '/forms/form-creator'
+      fullPath: '/forms/form-creator'
+      preLoaderRoute: typeof FormsFormCreatorLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -76,12 +91,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/forms/smart-diagnostics': typeof FormsSmartDiagnosticsRoute
   '/forms/basic-questionnaire': typeof FormsBasicQuestionnaireLazyRoute
+  '/forms/form-creator': typeof FormsFormCreatorLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/forms/smart-diagnostics': typeof FormsSmartDiagnosticsRoute
   '/forms/basic-questionnaire': typeof FormsBasicQuestionnaireLazyRoute
+  '/forms/form-creator': typeof FormsFormCreatorLazyRoute
 }
 
 export interface FileRoutesById {
@@ -89,18 +106,28 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/forms/smart-diagnostics': typeof FormsSmartDiagnosticsRoute
   '/forms/basic-questionnaire': typeof FormsBasicQuestionnaireLazyRoute
+  '/forms/form-creator': typeof FormsFormCreatorLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/forms/smart-diagnostics' | '/forms/basic-questionnaire'
+  fullPaths:
+    | '/'
+    | '/forms/smart-diagnostics'
+    | '/forms/basic-questionnaire'
+    | '/forms/form-creator'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/forms/smart-diagnostics' | '/forms/basic-questionnaire'
+  to:
+    | '/'
+    | '/forms/smart-diagnostics'
+    | '/forms/basic-questionnaire'
+    | '/forms/form-creator'
   id:
     | '__root__'
     | '/'
     | '/forms/smart-diagnostics'
     | '/forms/basic-questionnaire'
+    | '/forms/form-creator'
   fileRoutesById: FileRoutesById
 }
 
@@ -108,12 +135,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FormsSmartDiagnosticsRoute: typeof FormsSmartDiagnosticsRoute
   FormsBasicQuestionnaireLazyRoute: typeof FormsBasicQuestionnaireLazyRoute
+  FormsFormCreatorLazyRoute: typeof FormsFormCreatorLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FormsSmartDiagnosticsRoute: FormsSmartDiagnosticsRoute,
   FormsBasicQuestionnaireLazyRoute: FormsBasicQuestionnaireLazyRoute,
+  FormsFormCreatorLazyRoute: FormsFormCreatorLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -130,7 +159,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/forms/smart-diagnostics",
-        "/forms/basic-questionnaire"
+        "/forms/basic-questionnaire",
+        "/forms/form-creator"
       ]
     },
     "/": {
@@ -141,6 +171,9 @@ export const routeTree = rootRoute
     },
     "/forms/basic-questionnaire": {
       "filePath": "forms/basic-questionnaire.lazy.tsx"
+    },
+    "/forms/form-creator": {
+      "filePath": "forms/form-creator.lazy.tsx"
     }
   }
 }
