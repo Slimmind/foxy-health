@@ -1,5 +1,5 @@
 // Cache version
-const CACHE_NAME = 'tasky-cache-v1';
+const CACHE_NAME = 'foxy-health-cache-v1';
 
 // Files to cache
 const urlsToCache = [
